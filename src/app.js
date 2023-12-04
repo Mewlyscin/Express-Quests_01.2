@@ -1,10 +1,19 @@
+require("dotenv").config();
+
+// import Router
+
+const usersRouter = require("./router/usersRouter");
+const moviesRouter = require("./router/moviesRouter");
+
+const port = process.env.APP_PORT;
+
 const express = require("express");
 
 const app = express();
 
-const movieControllers = require("./controllers/movieControllers");
+//app.use (usersRouter)
 
-app.get("/api/movies", movieControllers.getMovies);
-app.get("/api/movies/:id", movieControllers.getMovieById);
+app.use(moviesRouter);
+app.use(usersRouter);
 
 module.exports = app;
