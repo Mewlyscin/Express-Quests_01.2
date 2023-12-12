@@ -49,12 +49,12 @@ const postUsers = (req, res) => {
 
 const updateUsers = (req, res) => {
   const id = parseInt(req.params.id);
-  const { title, director, year, color, duration } = req.body;
+  const { firstname, lastname, email, city, language } = req.body;
 
   database
     .query(
-      "UPDATE movies SET title = ?, director = ?, year =?, color = ?, duration = ? WHERE id = ?",
-      [title, director, year, color, duration, id]
+      "UPDATE users SET firstname = ?, lastname = ?, email =?, city = ?, language = ? WHERE id = ?",
+      [firstname, lastname, email, city, language, id]
     )
     .then(([result]) => {
       if (result.affectedRows === 0) {
